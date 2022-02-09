@@ -21,8 +21,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    docker.image("$IMAGEN:$BUILD_NUMBER").withRun() {
-                           sh 'ps -A|grep apache2'
+                    docker.image("$IMAGEN:$BUILD_NUMBER").withRun {
+                           c -> sh 'apache2ctl -v'
                         }
                     }
             }
