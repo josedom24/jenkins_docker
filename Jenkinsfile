@@ -1,7 +1,7 @@
 pipeline {
     environment {
         IMAGEN = "josedom24/myapp"
-        USUARIO = 'user_dockerhub'
+        USUARIO = credentials('USER_DOCKERHUB')
     }
     agent any
     stages {
@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def newApp = docker.build IMAGEN+":${env.BUILD_NUMBER}"
+                    def newApp = docker.build IMAGEN+":$BUILD_NUMBER"
                 }
             }
         }
