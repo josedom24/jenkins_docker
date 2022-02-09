@@ -20,7 +20,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "docker exec $IMAGEN:$BUILD_NUMBER ps -A|grep apache2"
+                sh "docker run --rm $IMAGEN:$BUILD_NUMBER ps -A|grep apache2"
             }
         }
         
