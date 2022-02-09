@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry( '', USUARIO ) {
-                        dockerImage.push()
+                        newApp.push()
                     }
                 }
             }
