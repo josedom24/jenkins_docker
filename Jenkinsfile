@@ -13,8 +13,14 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    newApp = docker.build IMAGEN+":$BUILD_NUMBER"
+                    newApp = docker.build "$IMAGEN:$BUILD_NUMBER"
                 }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh "docker exec $IMAGEN:$BUILD_NUMBER ps -A|grep apache2"
             }
         }
         
