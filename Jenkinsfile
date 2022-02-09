@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        IMAGEN = "josedom24/myapp"
+        USUARIO = 'user_dockerhub'
+    }
     agent any
     stages {
         stage('Clone') {
@@ -9,14 +13,24 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def newApp = docker.build "josedom24/myapp:${env.BUILD_TAG}"
+                    def newApp = docker.build IMAGEN+":${env.BUILD_NUMBER}"
                 }
             }
         }
         
         stage('Deploy') {
             steps {
-                echo 'Tareas para desplegar, construir, ...'
+                script {
+                    docker.withRegistry( '', USUARIO ) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('Clean Up') {
+            steps {
+                sh "docker rmi $IMAGEN:$BUILD_NUMBER"
+                }
             }
         }
     }
