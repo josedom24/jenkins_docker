@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def newApp = docker.build IMAGEN+":$BUILD_NUMBER"
+                    newApp = docker.build IMAGEN+":$BUILD_NUMBER"
                 }
             }
         }
