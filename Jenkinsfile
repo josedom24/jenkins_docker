@@ -21,8 +21,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    docker.image("$IMAGEN:$BUILD_NUMBER").inside {
-                           c -> sh 'apache2ctl -v'
+                    docker.image("$IMAGEN:$BUILD_NUMBER").inside('') {
+                           sh 'apache2ctl -v'
                         }
                     }
             }
