@@ -28,19 +28,19 @@ pipeline {
             }
         }
         
-        #stage('Deploy') {
-        #    steps {
-        #        script {
-        #            docker.withRegistry( '', USUARIO ) {
-        #                newApp.push()
-        #            }
-        #        }
-        #    }
-        #}
-        #stage('Clean Up') {
-        #    steps {
-        #        sh "docker rmi $IMAGEN:$BUILD_NUMBER"
-        #        }
-        #}
+        //stage('Deploy') {
+        //    steps {
+        //        script {
+        //            docker.withRegistry( '', USUARIO ) {
+        //                newApp.push()
+        //            }
+        //        }
+        //    }
+        //}
+        //stage('Clean Up') {
+        //    steps {
+        //        sh "docker rmi $IMAGEN:$BUILD_NUMBER"
+        //        }
+        //}
     }
 }
