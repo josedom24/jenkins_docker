@@ -6,14 +6,6 @@ pipeline {
                 git branch: "main", url: 'https://github.com/josedom24/jenkins_docker.git'
             }
         }
-        stage('Test') {
-            steps {
-                script
-                {
-                    ls -al
-                }
-            }
-        }
         stage('Build') {
             steps {
                 script {
